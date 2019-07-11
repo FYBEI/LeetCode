@@ -2,10 +2,15 @@ package queue_stack;
 
 import org.junit.Assert;
 import org.junit.Test;
+import queue_stack.conclude.DecodeString;
+import queue_stack.conclude.FloodFill;
+import queue_stack.conclude.MyQueue;
+import queue_stack.conclude.MyStack;
 import queue_stack.queue.MyCircularQueue;
 import queue_stack.queue.NumInlands;
 import queue_stack.queue.NumSquare;
 import queue_stack.queue.OpenLock;
+import queue_stack.stack.*;
 
 public class Run {
 
@@ -78,5 +83,138 @@ public class Run {
         int exp = 3;
 
         Assert.assertEquals(exp, num);
+    }
+
+    @Test
+    public void minstack(){
+        MinStack minStack = new MinStack();
+        minStack.push(-2);
+        minStack.push(0);
+        minStack.push(-3);
+
+        int min = minStack.getMin();
+        Assert.assertEquals(-3, min);
+
+        minStack.pop();
+
+        int top = minStack.top();
+        Assert.assertEquals(0, top);
+
+        min = minStack.getMin();
+        Assert.assertEquals(-2, min);
+    }
+
+    @Test
+    public void isValid(){
+        ValidBrackets validBrackets = new ValidBrackets();
+
+        String test1 = "([)]";
+        String test2 = "{[]}";
+
+        boolean result1 = validBrackets.isValid(test1);
+        Assert.assertFalse(result1);
+
+        boolean result2 = validBrackets.isValid(test2);
+        Assert.assertTrue(result2);
+    }
+
+    @Test
+    public void daily(){
+        DailyTemperature dailyTemperature = new DailyTemperature();
+
+        int[] test = {73, 74, 75, 71, 69, 72, 76, 73};
+
+        int[] result = dailyTemperature.dailyTemperatures(test);
+
+        for (int i = 0; i < result.length; i++){
+            System.out.print(result[i] + " ");
+        }
+    }
+
+    @Test
+    public void evalRPN(){
+        EvalRPN evalRPN = new EvalRPN();
+
+        String[] test = {"10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"};
+        int exp = 22;
+
+        int result = evalRPN.evalRPN(test);
+        Assert.assertEquals(exp, result);
+    }
+
+    @Test
+    public void findTarget(){
+        FindTarget findTarget = new FindTarget();
+
+        int[] nums = {1, 1, 1, 1, 1, 1};
+        int target = 4;
+
+        int exp = 6;
+
+        int result = findTarget.findTargetSumWays(nums, target);
+        Assert.assertEquals(exp, result);
+    }
+
+    @Test
+    public void stackQueue(){
+        MyQueue queue = new MyQueue();
+
+        queue.push(1);
+        queue.push(2);
+        int a = queue.peek();  // 返回 1
+        Assert.assertEquals(1, a);
+
+        a = queue.pop();   // 返回 1
+        Assert.assertEquals(1, a);
+
+        boolean empty = queue.empty(); // 返回 false
+        Assert.assertFalse(empty);
+    }
+
+    @Test
+    public void queueStack(){
+
+        MyStack obj = new MyStack();
+
+        obj.push(2);
+        obj.push(3);
+        obj.push(4);
+
+        int param_2 = obj.pop();
+        int param_3 = obj.top();
+        boolean param_4 = obj.empty();
+
+        Assert.assertEquals(4, param_2);
+        Assert.assertEquals(3, param_3);
+        Assert.assertFalse(param_4);
+    }
+
+    @Test
+    public void decodeString() {
+        DecodeString decodeString = new DecodeString();
+
+        String test = "2[abc]3[cd]ef";
+        String result = decodeString.decodeString(test);
+
+        System.out.print(result);
+    }
+
+    @Test
+    public void floodfill(){
+        FloodFill floodFill = new FloodFill();
+
+        int[][] image = {{0,0,0},{0,1,0}};
+
+        int sr = 1, sc = 1;
+        int newColor = 2;
+
+        int[][] result = floodFill.floodFill2(image, sr, sc, newColor);
+
+        for (int i = 0; i < result.length; i++){
+            for (int j = 0; j < result[i].length; j++){
+                System.out.print(image[i][j] + " ");
+            }
+            System.out.println(" ");
+        }
     }
 }

@@ -138,7 +138,8 @@ public class NumInlands {
                             }
 
                             //移出队列头
-                            queue.remove();
+                            Island remove = queue.remove();
+                            grid[remove.getRow()][remove.getCol()] = '0';
                         }
 
                         num++;
