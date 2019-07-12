@@ -2,15 +2,15 @@ package queue_stack;
 
 import org.junit.Assert;
 import org.junit.Test;
-import queue_stack.conclude.DecodeString;
-import queue_stack.conclude.FloodFill;
-import queue_stack.conclude.MyQueue;
-import queue_stack.conclude.MyStack;
+import queue_stack.conclude.*;
 import queue_stack.queue.MyCircularQueue;
 import queue_stack.queue.NumInlands;
 import queue_stack.queue.NumSquare;
 import queue_stack.queue.OpenLock;
 import queue_stack.stack.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Run {
 
@@ -216,5 +216,46 @@ public class Run {
             }
             System.out.println(" ");
         }
+    }
+
+    @Test
+    public void updateMatrix(){
+        ZeroOneMatrix zeroOneMatrix = new ZeroOneMatrix();
+
+        int[][] test = {{0, 0, 0},
+                        {0, 1, 0},
+                        {1, 1, 1}};
+
+        int[][] result = zeroOneMatrix.updateMatrix(test);
+
+        for (int i = 0; i < result.length; i++){
+            for (int j = 0; j < result[i].length; j++){
+                System.out.print(result[i][j] + " ");
+            }
+            System.out.println(" ");
+        }
+    }
+
+    @Test
+    public void keyRoom(){
+        KeyAndRoom keyAndRoom = new KeyAndRoom();
+
+        List<List<Integer>> rooms = new ArrayList<>();
+        List<Integer> room0 = new ArrayList<>();
+        List<Integer> room1 = new ArrayList<>();
+        List<Integer> room2 = new ArrayList<>();
+        List<Integer> room3 = new ArrayList<>();
+
+        room0.add(1);room0.add(3);
+        room1.add(3);room1.add(0);room2.add(1);
+        room2.add(2);
+        room3.add(0);
+        rooms.add(room0);
+        rooms.add(room1);
+        rooms.add(room2);
+        rooms.add(room3);
+
+        boolean result = keyAndRoom.canVisitAllRooms(rooms);
+        Assert.assertFalse(result);
     }
 }
