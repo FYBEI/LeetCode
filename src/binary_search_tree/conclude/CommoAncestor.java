@@ -10,7 +10,7 @@ public class CommoAncestor {
         }
 
         //如果遇见p或者q返回当前结点
-        if(root == p || root == q) {
+        if(root.val == p.val || root.val == q.val) {
             return root;
         }
 
@@ -24,11 +24,11 @@ public class CommoAncestor {
 
         //如果都小于根节点，说明都在左子树；反之，都在右子树
         if (root.val < p.val && root.val < q.val){
-            lowestCommonAncestor(root.right, p, q);
+            return lowestCommonAncestor(root.right, p, q);
         }
 
         if (root.val > p.val && root.val > q.val){
-            lowestCommonAncestor(root.left, p, q);
+            return lowestCommonAncestor(root.left, p, q);
         }
 
         return null;
