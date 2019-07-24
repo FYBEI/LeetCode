@@ -1,5 +1,6 @@
 package hash;
 
+import hash.hash_map.CommonRestaurant;
 import hash.hash_set.Duplicate;
 import hash.hash_set.HappyNumber;
 import org.junit.Assert;
@@ -22,5 +23,15 @@ public class Run {
 
         boolean result = happyNumber.isHappy(7);
         Assert.assertTrue(result);
+    }
+
+    @Test
+    public void restaurant(){
+        String[] list1 = {"vacag","KFC"};
+        String[] list2 = {"fvo","xrljq","jrl","KFC"};
+
+        CommonRestaurant restaurant = new CommonRestaurant();
+
+        String[] result = restaurant.findRestaurant(list1, list2);
     }
 }
