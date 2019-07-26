@@ -1,6 +1,11 @@
 package hash;
 
+import binary_search_tree.TreeNode;
+import hash.conclude.RandomizedSet;
+import hash.conclude.SubString;
+import hash.conclude.TopK;
 import hash.design_key.Anagrams;
+import hash.design_key.DuplicateSubtree;
 import hash.hash_map.CommonRestaurant;
 import hash.hash_map.DuplicateNum;
 import hash.hash_map.SingleCharacter;
@@ -75,6 +80,71 @@ public class Run {
             }
             System.out.println(" ");
         }
+    }
+
+    @Test
+    public void duplicateTree(){
+        DuplicateSubtree subtree = new DuplicateSubtree();
+
+        TreeNode a1 = new TreeNode(1);
+        TreeNode a2 = new TreeNode(2);
+        TreeNode a3 = new TreeNode(3);
+        TreeNode a4 = new TreeNode(4);
+        TreeNode a5 = new TreeNode(2);
+        TreeNode a6 = new TreeNode(4);
+        TreeNode a7 = new TreeNode(4);
+
+        a1.left = a2;
+        a1.right = a3;
+        a2.left = a4;
+        a3.left = a5;
+        a3.right = a6;
+        a5.left = a7;
+
+        List<TreeNode> result = subtree.findDuplicateSubtrees(a1);
+
+        for (TreeNode treeNode : result){
+            System.out.println(treeNode.val);
+        }
+    }
+
+    @Test
+    public void length(){
+        SubString subString = new SubString();
+
+        String s = "dvdf";
+
+        int num = subString.lengthOfLongestSubstring(s);
+        System.out.println(num);
+    }
+
+    @Test
+    public void topK(){
+        TopK topK = new TopK();
+
+        int[] nums = {1,1,1,2,2,3};
+        int k = 2;
+
+        List<Integer> list = topK.topKFrequent(nums, k);
+
+        for (Integer num : list){
+            System.out.println(num);
+        }
+    }
+
+    @Test
+    public void random(){
+        RandomizedSet set = new RandomizedSet();
+
+        boolean a1 = set.insert(1);
+        boolean a2 = set.remove(2);
+        boolean a3 = set.insert(2);
+        int b1 = set.getRandom();
+        boolean a4 = set.remove(1);
+        boolean a5 = set.insert(2);
+        int b2 = set.getRandom();
+
+        System.out.println(a1 + " " + a2 + " " + a3 + " " + b1 + " " + a4 + " " + a5 + " " + b2);
     }
 
     @Test
