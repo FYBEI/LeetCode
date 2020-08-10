@@ -20,10 +20,6 @@ package dynamic;
  */
 public class MinPathSum {
 
-    int min(int a, int b){
-        return a<b?a:b;
-    }
-
     public int minPathSum(int[][] grid) {
         int len = grid.length;
         if (len == 0){
@@ -48,7 +44,7 @@ public class MinPathSum {
 
         for (int i = 1; i < len; i++){
             for (int j = 1; j < wid; j++){
-                tmp[i][j] = min(tmp[i-1][j] + grid[i][j], tmp[i][j-1] + grid[i][j]);
+                tmp[i][j] = Math.min(tmp[i-1][j] + grid[i][j], tmp[i][j-1] + grid[i][j]);
             }
         }
 

@@ -53,19 +53,28 @@ public class Run {
         row4.add(1);
         row4.add(8);
         row4.add(3);
-        List<Integer> row5 = new ArrayList<>();
-        row5.add(1);
-        row5.add(20);
-        row5.add(20);
-        row5.add(20);
-        row5.add(20);
         tran.add(row1);
         tran.add(row2);
         tran.add(row3);
         tran.add(row4);
-        tran.add(row5);
 
         int result = minimumTotal.minimumTotal(tran);
         System.out.println(result);
+    }
+
+    @Test
+    public void thief(){
+        int[] nums = {4, 1, 1, 2, 1, 9};
+        Thief t = new Thief();
+        int money = t.rob(nums);
+        System.out.println(money);
+    }
+
+    @Test
+    public void coinChange(){
+        int[] coins = {2, 3, 4};
+        int amount = 5;
+        int num = CoinChange.coinChange(coins, amount);
+        System.out.println(num);
     }
 }
