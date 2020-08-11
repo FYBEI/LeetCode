@@ -72,9 +72,11 @@ public class Run {
 
     @Test
     public void coinChange(){
-        int[] coins = {2, 3, 4};
-        int amount = 5;
-        int num = CoinChange.coinChange(coins, amount);
+        int[] coins = {1};
+        int amount = 1;
+        CoinChange c = new CoinChange();
+        int num = c.coinChange(coins, amount);
         System.out.println(num);
     }
+
 }
