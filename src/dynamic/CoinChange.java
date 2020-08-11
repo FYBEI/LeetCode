@@ -1,5 +1,7 @@
 package dynamic;
 
+import java.util.Arrays;
+
 public class CoinChange {
 
     public int coinChange(int[] coins, int amount) {
@@ -42,5 +44,34 @@ public class CoinChange {
         //如果最小还是无限，取该值为-1，说明无法刚好分配
         count[rem - 1] = (min == Integer.MAX_VALUE) ? -1 : min;
         return count[rem - 1];
+    }
+
+
+    //更好更清晰的算法
+    public int coinChange2(int[] coins, int amount) {
+
+        int [] dp=new int [amount+1];
+        //初始化将每个硬币的数量最大化到总面值
+        Arrays.fill(dp,amount+1);
+        //0元的数量为0
+        dp[0]=0;
+
+        for(int i=1; i<dp.length; i++)
+        {
+            for(int coin:coins)
+            {
+                //所需面值小于当前硬币的面值
+                if(i < coin) {
+                    continue;
+                }
+
+                //当前面值需要的硬币数为，减去当前硬币，之前的硬币数+1（比如6元只需在5元的基础上+1元）
+                dp[i]=Math.min(dp[i], dp[i-coin] + 1);
+
+            }
+        }
+
+        //如果面值amount的数量仍然为amount+1，说明没有刚好分配的硬币
+        return dp[amount]==amount+1? -1:dp[amount];
     }
 }
