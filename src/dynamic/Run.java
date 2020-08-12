@@ -79,4 +79,11 @@ public class Run {
         System.out.println(num);
     }
 
+    @Test
+    public void lengthOfLIS(){
+        int[] nums = {4,10,4,3,8,9};
+        int num = LengthOfLIS.lengthOfLIS(nums);
+        System.out.println(num);
+    }
+
 }
