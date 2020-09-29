@@ -81,7 +81,7 @@ public class Run {
 
     @Test
     public void lengthOfLIS(){
-        int[] nums = {4,10,4,3,8,9};
+        int[] nums = {2, 1, -10, -8, -1};
         int num = LengthOfLIS.lengthOfLIS(nums);
         System.out.println(num);
     }

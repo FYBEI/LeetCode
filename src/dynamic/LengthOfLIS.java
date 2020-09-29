@@ -10,6 +10,9 @@ public class LengthOfLIS {
         }
 
         int[] dp = new int[len + 1];
+        for(int i = 0; i < len + 1; i++){
+            dp[i] = Integer.MIN_VALUE;
+        }
         dp[1] = nums[0];
 
         int p = 1;
