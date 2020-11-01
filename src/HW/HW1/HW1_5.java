@@ -1,4 +1,4 @@
-package HW1;
+package HW.HW1;
 
 import java.util.Arrays;
 
@@ -44,6 +44,10 @@ public class HW1_5 {
         return merge(sort(a), sort(b));
     }
 
+    /**
+     * 二路归并排序测试
+     * @param args
+     */
     public static void main(String[] args) {
         //生成随机数组，长度20
         int[] nums = new int[20];

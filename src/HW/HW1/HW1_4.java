@@ -1,4 +1,4 @@
-package HW1;
+package HW.HW1;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -103,6 +103,10 @@ public class HW1_4 {
 
     }
 
+    /**
+     * 棋盘覆盖测试
+     * @param args
+     */
     public static void main(String[] args) {
         System.out.print("输入k：");
         int k = new Scanner(System.in).nextInt();

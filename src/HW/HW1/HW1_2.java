@@ -1,4 +1,4 @@
-package HW1;
+package HW.HW1;
 
 public class HW1_2 {
 
@@ -79,7 +79,7 @@ public class HW1_2 {
      * @param high
      */
     public void quickSortPrePivot(int[] nums, int low, int high){
-        if (low >= high){
+        if (low > high){
             return;
         }
 
@@ -90,14 +90,14 @@ public class HW1_2 {
 
         while (first < last){
             //高位指针大于前枢值，高位指针往头部走
-            while (first < last && nums[last] > key){
+            while (first < last && nums[last] >= key){
                 last--;
             }
             //将比前枢小的值放在低位
             nums[first] = nums[last];
 
             //低位指针小于前枢值，低位指针往尾部走
-            while (first < last && nums[first] < key){
+            while (first < last && nums[first] <= key){
                 first++;
             }
             //将比前枢大的值放在高位
@@ -111,15 +111,20 @@ public class HW1_2 {
         quickSortPrePivot(nums, first + 1, high);
     }
 
+    /**
+     * 测试中枢快排和前枢快排的差距
+     * @param args
+     */
     public static void main(String[] args) {
-        //生成随机数组，长度20
-        int[] nums = new int[20];
+        //生成随机数组
+        int len = 100;
+        int[] nums = new int[len];
         for(int i = 0; i < nums.length; i++){
-            nums[i] = (int) (Math.random()*100);
+            nums[i] = (int) (Math.random()*len*10);
         }
 
         //复制随机数组给取前快速排序使用
-        int[] nums2 = new int[20];
+        int[] nums2 = new int[len];
         for (int i = 0; i < nums.length; i++) {
             nums2[i] = nums[i];
         }

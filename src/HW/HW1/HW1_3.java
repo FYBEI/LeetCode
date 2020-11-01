@@ -1,4 +1,4 @@
-package HW1;
+package HW.HW1;
 
 import java.util.Scanner;
 
@@ -35,6 +35,10 @@ public class HW1_3 {
         }
     }
 
+    /**
+     * 二分查找测试
+     * @param args
+     */
     public static void main(String[] args) {
         //输入数组
         Scanner input = new Scanner(System.in);
