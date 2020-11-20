@@ -34,6 +34,7 @@ public class HW3_1 {
             }
         }
 
+        System.out.print("计算次数：");
         System.out.println(result);
         print_chain(s, 1, n-1);
     }
