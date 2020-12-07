@@ -26,19 +26,15 @@ public class HW2_1 {
             }
         }
 
-        int result = Integer.MAX_VALUE;
         for (int i = 1; i < n; i++){
             for (int j = i + 1; j < n; j++){
                 System.out.printf("%6d\t", min[i][j]);
-
-                if(result > min[i][j])
-                    result = min[i][j];
             }
             System.out.println(' ');
         }
 
         System.out.print("计算次数：");
-        System.out.println(result);
+        System.out.println(min[1][n-1]);
         print_chain(s, 1, n-1);
     }
 
