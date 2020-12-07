@@ -1,6 +1,6 @@
-package HW.HW3;
+package HW.HW2;
 
-public class HW3_3 {
+public class HW2_3 {
 
     static int[] mostTask(int[] tasks, int[] s, int[] f){
         int[] result = new int[tasks.length];
@@ -40,7 +40,7 @@ public class HW3_3 {
         int[] s = {2, 2, 3, 4, 6, 7, 9, 10, 13};
         int[] f = {3, 4, 5, 7, 8, 11, 12, 15, 17};
 
-        int[] result = HW3_3.mostTask(tasks, s, f);
+        int[] result = HW2_3.mostTask(tasks, s, f);
 
         for(int i : result){
             if (i == 0){

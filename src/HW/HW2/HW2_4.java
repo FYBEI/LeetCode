@@ -1,8 +1,8 @@
-package HW.HW3;
+package HW.HW2;
 
 import java.util.*;
 
-public class HW3_4 {
+public class HW2_4 {
 
     public static TreeNode getHuffmanTree(int[] p){
         TreeNode parent = null;
@@ -37,7 +37,7 @@ public class HW3_4 {
     public static void main(String[] args) {
         int[] p = {31, 12, 5, 2, 10, 18, 22};
 
-        TreeNode root = HW3_4.getHuffmanTree(p);
+        TreeNode root = HW2_4.getHuffmanTree(p);
         root.preOrder();
     }
 }

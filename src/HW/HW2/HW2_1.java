@@ -1,6 +1,6 @@
-package HW.HW3;
+package HW.HW2;
 
-public class HW3_1 {
+public class HW2_1 {
 
     static void matrixChainMultiplication(int[] p){
         int n = p.length;
@@ -29,9 +29,12 @@ public class HW3_1 {
         int result = Integer.MAX_VALUE;
         for (int i = 1; i < n; i++){
             for (int j = i + 1; j < n; j++){
+                System.out.printf("%6d\t", min[i][j]);
+
                 if(result > min[i][j])
                     result = min[i][j];
             }
+            System.out.println(' ');
         }
 
         System.out.print("计算次数：");
@@ -54,6 +57,6 @@ public class HW3_1 {
     public static void main(String[] args) {
 
         int[] p = {10, 100, 5, 50, 30, 20, 60, 45, 50};
-        HW3_1.matrixChainMultiplication(p);
+        HW2_1.matrixChainMultiplication(p);
     }
 }

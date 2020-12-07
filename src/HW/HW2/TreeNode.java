@@ -1,4 +1,4 @@
-package HW.HW3;
+package HW.HW2;
 
 public class TreeNode implements Comparable<TreeNode> {
     int val;

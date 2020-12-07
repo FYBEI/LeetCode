@@ -1,6 +1,6 @@
-package HW.HW3;
+package HW.HW2;
 
-class HW3_2 {
+class HW2_2 {
     double[] p;
     double[] q;
     double[][] E;
@@ -47,7 +47,7 @@ class HW3_2 {
     }
 
     public static void main(String[] args){
-        HW3_2 bst=new HW3_2();
+        HW2_2 bst=new HW2_2();
         bst.p=new double[]{0.00,0.15,0.10,0.05,0.10,0.20};
         bst.q=new double[]{0.05,0.10,0.05,0.05,0.05,0.10};
         int len=bst.p.length;
