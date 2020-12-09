@@ -1,6 +1,4 @@
-package HW.Dynamic;
-
-import java.util.List;
+package HW.Greedy;
 
 /**
  * 单源最短路径
