@@ -1,13 +1,5 @@
 package Summary_of_Interview_Problem.string;
 
-import javafx.geometry.Pos;
-import javafx.util.Pair;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 /***
  * 输入
  * ["Trie", "insert", "search", "search", "startsWith", "insert", "search"]
@@ -27,8 +19,8 @@ import java.util.Map;
 
 public class Trie {
 
-    private Trie[] children;
-    private boolean isEnd;
+    public Trie[] children;
+    public boolean isEnd;
 
     /** Initialize your data structure here. */
     public Trie() {
