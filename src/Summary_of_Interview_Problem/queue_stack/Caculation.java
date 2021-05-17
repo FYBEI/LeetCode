@@ -1,87 +1,59 @@
 package Summary_of_Interview_Problem.queue_stack;
 
-import java.util.Stack;
+import java.util.Deque;
+import java.util.LinkedList;
 
 public class Caculation {
 
-    private static int START = 0;
-    private static int NUM = 1;
-    private static int CAL = 2;
-
     public int calculate(String s) {
-        Stack<Character> op_stack = new Stack<>();
-        Stack<Integer> num_stack = new Stack<>();
-        int flag = START;
 
-        for (int i = 0; i < s.length(); i++){
-            char ch = s.charAt(i);
+        Deque<Integer> stack = new LinkedList<Integer>();
 
-            if ('0' <= ch && ch <= '9'){
-                //当前输入为数字
-                int num = ch - '0';
+        char preSign = '+'; // 记录前一符号
+        int num = 0;
+        int n = s.length();
 
-                // 如果前一个字符也为数字，需要将当前数字接在数字栈顶数字后
-                if (flag == NUM){
-                    int new_num = num_stack.pop()*10 + (ch - '0');
-                    num_stack.push(new_num);
-                }else {
-                    num_stack.push(num);
-                }
-                flag = NUM;
-            }else if (ch == ' '){
-                continue;
-            }else {
-                if (!op_stack.isEmpty()){
-                    if (op_stack.peek() == '*'){
-                        op_stack.pop();
-                        int second = num_stack.pop();
-                        int first = num_stack.pop();
-                        int new_num = first*second;
-                        num_stack.push(new_num);
-                    }else if (op_stack.peek() == '/'){
-                        op_stack.pop();
-                        int second = num_stack.pop();
-                        int first = num_stack.pop();
-                        int new_num = first/second;
-                        num_stack.push(new_num);
-                    }
+        for (int i = 0; i < n; ++i) {
+
+            // 数字的话就不断叠加
+            if (Character.isDigit(s.charAt(i))) {
+                num = num * 10 + s.charAt(i) - '0';
+            }
+
+            // 非数字的话需要判断前一个符号，+-则直接压入，乘除需要进行一次运算
+            if (!Character.isDigit(s.charAt(i)) && s.charAt(i) != ' ' || i == n - 1) {
+                switch (preSign) {
+                    case '+':
+                        stack.push(num);
+                        break;
+                    case '-':
+                        stack.push(-num);
+                        break;
+                    case '*':
+                        stack.push(stack.pop() * num);
+                        break;
+                    default:
+                        stack.push(stack.pop() / num);
                 }
 
-                op_stack.push(ch);
-                flag = CAL;
-
+                // 更新前一项符号和当前数字
+                preSign = s.charAt(i);
+                num = 0;
             }
         }
 
-        int result;
-        while (!op_stack.isEmpty()){
-            int second = num_stack.pop();
-            int first = num_stack.pop();
-            char op = op_stack.pop();
-            if (op == '+'){
-                int new_num = first + second;
-                num_stack.push(new_num);
-            }else if (op == '-'){
-                int new_num = first - second;
-                num_stack.push(new_num);
-            }else if (op == '*'){
-                int new_num = first * second;
-                num_stack.push(new_num);
-            }else if (op == '/'){
-                int new_num = first / second;
-                num_stack.push(new_num);
-            }
+        // 计算最先加入的一项
+        int ans = 0;
+        while (!stack.isEmpty()) {
+            ans += stack.pop();
         }
-
-        result = num_stack.pop();
-
-        return result;
+        return ans;
     }
 
     public static void main(String[] args) {
         Caculation caculation = new Caculation();
 
-        String s = "1-1+1";
+        String s = "1-1*12+1";
         int result = caculation.calculate(s);
         System.out.print(result);
     }
