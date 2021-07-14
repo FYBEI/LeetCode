@@ -1,29 +1,30 @@
 package Summary_of_Interview_Problem.tree;
 
+import java.util.Stack;
+
 public class BinaryTreeKthSmallest {
     public int kthSmallest(TreeNode root, int k) {
-        int result = 0;
+        Stack<TreeNode> stack = new Stack<>();
 
-        int rightNum = getChildNum(root.right);
-        if (rightNum == k-1){
-            result = root.val;
-        }else if (rightNum < k-1){
-            result = kthSmallest(root.left, k-rightNum-1);
-        }else if (rightNum > k-1){
-            result = kthSmallest(root.right, k);
-        }
+        insert(root, stack, k);
 
-        return result;
+        return stack.peek().val;
     }
 
-    private int getChildNum(TreeNode root){
-        if (root == null){
-            return 0;
+    private void insert(TreeNode root, Stack<TreeNode> stack, int k){
+        if (root.right != null){
+            insert(root.right, stack, k);
         }
 
-        int leftNum = getChildNum(root.left);
-        int rightNum = getChildNum(root.right);
-        return leftNum + rightNum + 1;
+        if (stack.size() == k){
+            return;
+        }
+
+        stack.push(root);
+
+        if (root.left != null){
+            insert(root.left, stack, k);
+        }
     }
 
     public static void main(String[] args) {
@@ -31,9 +32,13 @@ public class BinaryTreeKthSmallest {
             TreeNode node1 = new TreeNode(1);
             TreeNode node2 = new TreeNode(2);
             TreeNode node3 = new TreeNode(4);
-            root.left = node3;
+            TreeNode node4 = new TreeNode(5);
+            TreeNode node5 = new TreeNode(6);
             root.right = node1;
+            root.left = node4;
             node1.left = node2;
+            node4.right = node3;
+            node4.left = node5;
 
             BinaryTreeKthSmallest btk = new BinaryTreeKthSmallest();
             int result = btk.kthSmallest(root, 4);
