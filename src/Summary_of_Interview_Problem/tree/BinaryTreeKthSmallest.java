@@ -1,47 +1,44 @@
 package Summary_of_Interview_Problem.tree;
 
-import java.util.Stack;
+import java.util.ArrayList;
 
 public class BinaryTreeKthSmallest {
-    public int kthSmallest(TreeNode root, int k) {
-        Stack<TreeNode> stack = new Stack<>();
 
-        insert(root, stack, k);
+    public ArrayList<Integer> inorder(TreeNode root, ArrayList<Integer> arr, int k) {
+        if (root == null) {
+            return arr;
+        }
+        inorder(root.left, arr, k);
 
-        return stack.peek().val;
+        // 遍历到第k个提前结束
+        if (arr.size() == k) {
+            return arr;
+        }
+        arr.add(root.val);
+        inorder(root.right, arr, k);
+        return arr;
     }
 
-    private void insert(TreeNode root, Stack<TreeNode> stack, int k){
-        if (root.right != null){
-            insert(root.right, stack, k);
-        }
-
-        if (stack.size() == k){
-            return;
-        }
-
-        stack.push(root);
-
-        if (root.left != null){
-            insert(root.left, stack, k);
-        }
+    public int kthSmallest(TreeNode root, int k) {
+        ArrayList<Integer> nums = inorder(root, new ArrayList<Integer>(), k);
+        return nums.get(k - 1);
     }
 
     public static void main(String[] args) {
-            TreeNode root = new TreeNode(3);
+            TreeNode root = new TreeNode(5);
             TreeNode node1 = new TreeNode(1);
             TreeNode node2 = new TreeNode(2);
             TreeNode node3 = new TreeNode(4);
-            TreeNode node4 = new TreeNode(5);
+            TreeNode node4 = new TreeNode(3);
             TreeNode node5 = new TreeNode(6);
-            root.right = node1;
+            root.right = node5;
             root.left = node4;
-            node1.left = node2;
+            node4.left = node2;
             node4.right = node3;
-            node4.left = node5;
+            node2.left = node1;
 
             BinaryTreeKthSmallest btk = new BinaryTreeKthSmallest();
-            int result = btk.kthSmallest(root, 4);
+            int result = btk.kthSmallest(root, 3);
             System.out.print(result);
     }
 }
