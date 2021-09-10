@@ -37,24 +37,23 @@ public class MajorityElement {
      */
     static int majorityElement2(int[] nums){
         Map<Integer, Integer> counts = new HashMap<Integer, Integer>();
-        int max = 0;
-        int j = nums[0];
 
         for (int i = 0; i < nums.length; i++){
             if (!counts.containsKey(nums[i])){
                 counts.put(nums[i], 1);
             }else {
                 int num = counts.get(nums[i])+ 1;
-                counts.put(nums[i], num);
 
-                if (max <= num){
-                    max = num;
-                    j = nums[i];
+                if (num > nums.length/2){
+                    return nums[i];
+                }else {
+                    counts.put(nums[i], num);
                 }
+
             }
         }
 
-        return j;
+        return 0;
     }
 
     /**
