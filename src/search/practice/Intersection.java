@@ -79,23 +79,23 @@ public class Intersection {
         int len2 = nums2.length;
         Arrays.sort(nums1);
         Arrays.sort(nums2);
+
+        int[] inter = new int[len1+len2];
         int i = 0, j = 0, k = 0;
         while (i < len1 && j < len2) {
             if (nums1[i] == nums2[j]) {
-                nums1[k] = nums2[j];
+                if (k > 0 || inter[k-1] != nums1[i]){
+                    inter[k++] = nums2[j];
+                }
                 i++;
                 j++;
-                k++;
             } else if (nums1[i] < nums2[j]) {
                 i++;
             } else {
                 j++;
             }
         }
-        int[] res = new int[k];
-        for (int m = 0; m < k; m++) {
-            res[m] = nums1[m];
-        }
-        return res;
+
+        return Arrays.copyOfRange(inter, 0, k);
     }
 }
