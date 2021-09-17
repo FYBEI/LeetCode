@@ -1,6 +1,6 @@
 package linklist.classic;
 
-import linklist.double_pointer.ListNode;
+import linklist.ListNode;
 
 /**
  * 请判断一个链表是否为回文链表。

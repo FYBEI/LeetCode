@@ -1,5 +1,7 @@
 package linklist.double_pointer;
 
+import linklist.ListNode;
+
 public class RemoveNthFromEnd {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode slow = head;

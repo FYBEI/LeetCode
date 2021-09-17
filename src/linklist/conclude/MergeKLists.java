@@ -1,6 +1,6 @@
 package linklist.conclude;
 
-import linklist.double_pointer.ListNode;
+import linklist.ListNode;
 
 public class MergeKLists {
     public ListNode mergeKLists(ListNode[] lists) {

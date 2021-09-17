@@ -1,5 +1,7 @@
 package linklist.double_pointer;
 
+import linklist.ListNode;
+
 /**
  * 判断是否是环形链表
  */

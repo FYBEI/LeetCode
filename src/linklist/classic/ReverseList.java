@@ -1,6 +1,6 @@
 package linklist.classic;
 
-import linklist.double_pointer.ListNode;
+import linklist.ListNode;
 
 /**
  * 反转一个单链表。

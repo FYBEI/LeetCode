@@ -63,7 +63,7 @@ public class SetZeros {
     private void fillRow(int row, int[][] matrix){
         for (int i = 0; i < matrix[row].length; i++){
 
-            // 如果是为访问，且为0的，填充其列
+            // 如果是未访问，且为0的，填充其列
             if (visit[row][i] == 0 && matrix[row][i] == 0){
                 visit[row][i] = 1;
                 fillCol(i, matrix);
@@ -78,7 +78,7 @@ public class SetZeros {
     private void fillCol(int col, int[][] matrix){
         for (int i = 0; i < matrix.length; i++){
 
-            // 如果是为访问，且为0的，填充其行
+            // 如果是未访问，且为0的，填充其行
             if (visit[i][col] == 0 && matrix[i][col] == 0){
                 visit[i][col] = 1;
                 fillRow(i, matrix);

@@ -1,4 +1,4 @@
-package linklist.double_pointer;
+package linklist;
 
 public class ListNode {
     public int val;

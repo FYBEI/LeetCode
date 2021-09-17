@@ -1,5 +1,7 @@
 package linklist.double_pointer;
 
+import linklist.ListNode;
+
 /**
  * 编写一个程序，找到两个单链表相交的起始节点。
  *

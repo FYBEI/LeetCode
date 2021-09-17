@@ -9,7 +9,6 @@ import linklist.conclude.MergeList;
 import linklist.conclude.Node;
 import linklist.conclude.RotateRight;
 import linklist.double_pointer.DeleteNode;
-import linklist.double_pointer.ListNode;
 import linklist.singlelist.MyLinkedList;
 import org.junit.Assert;
 import org.junit.Test;

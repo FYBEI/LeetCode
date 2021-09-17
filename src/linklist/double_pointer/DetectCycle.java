@@ -1,5 +1,7 @@
 package linklist.double_pointer;
 
+import linklist.ListNode;
+
 import java.util.HashMap;
 import java.util.Map;
 

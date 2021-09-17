@@ -1,5 +1,7 @@
 package linklist.double_pointer;
 
+import linklist.ListNode;
+
 public class KthFromEnd {
     public ListNode getKthFromEnd(ListNode head, int k) {
         ListNode slow = head;
