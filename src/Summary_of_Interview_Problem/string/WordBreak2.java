@@ -55,20 +55,9 @@ public class WordBreak2 {
             }
         }
 
-        for (int i = 0; i <= s.length(); i++){
-            for (int j = 0; j <= s.length(); j++){
-                System.out.print(dp[i][j]);
-                System.out.printf(" ");
-            }
-            System.out.println();
-        }
-
         // 获得所有单词排列情况
         List<List<Integer>> indexes = dfs(dp, 0, s);
 
-        for (List<Integer> index : indexes){
-            System.out.println(index);
-        }
 
         List<String> sents = new ArrayList<>();
 
