@@ -11,7 +11,7 @@ import java.util.Comparator;
  * 输出：[[1,6],[8,10],[15,18]]
  * 解释：区间 [1,3] 和 [2,6] 重叠, 将它们合并为 [1,6].
  *
- * 示例 2：
+ * 示例 2：
  * 输入：intervals = [[1,4],[4,5]]
  * 输出：[[1,5]]
  * 解释：区间 [1,4] 和 [4,5] 可被视为重叠区间。
@@ -36,44 +36,32 @@ public class Merge {
             }
         });
 
-        int[] start = new int[intervals.length];
-        int[] end = new int[intervals.length];
-
-        start[0] = intervals[0][0];
-        end[0] = intervals[0][1];
+        int start = intervals[0][0];
+        int end = intervals[0][1];
+        int[][] result = new int[intervals.length][];
         int index = 0;
 
         for (int i = 1; i < intervals.length; i++) {
+            int s = intervals[i][0];
+            int e = intervals[i][1];
 
-            // 区间在前一个区间之外，建立新的区间
-            if (intervals[i][1] < start[index] || intervals[i][0] > end[index]){
-                index++;
-                start[index] = intervals[i][0];
-                end[index] = intervals[i][1];
-            }   // 区间包含前一个区间，更新前一个区间首尾
-            else if (intervals[i][0] < start[index] && end[index] < intervals[i][1]){
-                start[index] = intervals[i][0];
-                end[index] = intervals[i][1];
-            }   // 前一个区间包含区间，无视
-            else if (start[index] <= intervals[i][0] && intervals[i][1] <= end[index]){
+            if (s <= end && end < e){
+                end = e;
                 continue;
-            }   // 剩下区间相交的情况
-            else {
-                if (intervals[i][0] < start[index]){
-                    start[index] = intervals[i][0];
-                }
-                if (end[index] < intervals[i][1]){
-                    end[index] = intervals[i][1];
-                }
+            }
+
+            if (s > end){
+                result[index++] = new int[]{start, end};
+                start = s;
+                end = e;
+                continue;
             }
         }
+        result[index++] = new int[]{start, end};
 
-        int[][] result = new int[index+1][];
-        for (int i = 0; i < index+1; i++){
-            result[i] = new int[]{start[i], end[i]};
-        }
+        int[][] ans = Arrays.copyOf(result, index);
 
-        return result;
+        return ans;
     }
 
     public static void main(String[] args) {
