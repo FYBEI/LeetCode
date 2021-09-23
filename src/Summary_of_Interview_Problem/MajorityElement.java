@@ -20,8 +20,6 @@ public class MajorityElement {
 
     /**
      * 排序法，时间复杂度O(nlogn),空间复杂度O(n)
-     * @param nums
-     * @return
      */
     static int majorityElement(int[] nums){
         int mid = nums.length/2;
@@ -32,37 +30,34 @@ public class MajorityElement {
 
     /**
      * 哈希表法，时间复杂度O(n),空间复杂度O(n)
-     * @param nums
-     * @return
      */
-    static int majorityElement2(int[] nums){
-        Map<Integer, Integer> counts = new HashMap<Integer, Integer>();
+        static int majorityElement2(int[] nums){
+            Map<Integer, Integer> counts = new HashMap<Integer, Integer>();
 
-        for (int i = 0; i < nums.length; i++){
-            if (!counts.containsKey(nums[i])){
-                counts.put(nums[i], 1);
-            }else {
-                int num = counts.get(nums[i])+ 1;
-
-                if (num > nums.length/2){
-                    return nums[i];
+            for (int i = 0; i < nums.length; i++){
+                if (!counts.containsKey(nums[i])){
+                    counts.put(nums[i], 1);
                 }else {
-                    counts.put(nums[i], num);
+                    int num = counts.get(nums[i])+ 1;
+
+                    if (num > nums.length/2){
+                        return nums[i];
+                    }else {
+                        counts.put(nums[i], num);
+                    }
+
                 }
-
             }
-        }
 
-        return 0;
-    }
+            return 0;
+        }
 
     /**
      * Boyer-Moore投票算法:如果我们把众数记为+1，把其他数记为−1，将它们全部加起来，显然和大于 0，从结果本身我们可以看出众数比其他数多。
      * 时间复杂度：O(n),空间复杂度：O(1)
-     * @param nums
      */
     static int majorityElement3(int[] nums){
-        Integer canditate = null;
+        int canditate = nums[0];
         int count = 0;
 
         for (int i = 0; i < nums.length; i++){

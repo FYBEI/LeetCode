@@ -1,8 +1,5 @@
 package queue_stack.stack;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * MinStack minStack = new MinStack();
  * minStack.push(-2);
@@ -14,45 +11,41 @@ import java.util.List;
  * minStack.getMin();   --> 返回 -2.
  */
 public class MinStack {
-
-    private List<Integer> data = null;
+    int min = Integer.MAX_VALUE;
+    int[] stack;
+    int index;
 
     /** initialize your data structure here. */
     public MinStack() {
-        data = new ArrayList<>();
+        stack = new int[10000];
+        index = 0;
     }
 
-    public void push(int x) {
-        data.add(x);
+    public void push(int val) {
+        stack[index++] = val;
+
+        if (val < min){
+            min = val;
+        }
     }
 
     public void pop() {
-        if (data == null || data.size() == 0){
-            return;
+        if (stack[--index] == min){
+            min = Integer.MAX_VALUE;
+            for (int i = 0; i < index; i++){
+                if (min > stack[i]){
+                    min = stack[i];
+                }
+            }
         }
 
-        data.remove(data.size()-1);
     }
 
     public int top() {
-        if (data == null || data.size() == 0){
-            return 0;
-        }
-
-        return data.get(data.size()-1);
+        return stack[index-1];
     }
 
     public int getMin() {
-        if (data == null || data.size() == 0){
-            return 0;
-        }
-
-        int min = 0;
-
-        for (int i = 0; i < data.size(); i++){
-            min = min < data.get(i) ? min : data.get(i);
-        }
-
         return min;
     }
 }
