@@ -34,4 +34,14 @@ public class QuickSort {
         quickSort(nums, left, i-1);
         quickSort(nums, i+1, right);
     }
+
+    public static void main(String[] args) {
+
+        int[] nums = {4,2 ,1, 3, 5,1};
+        QuickSort.quickSort(nums, 0, nums.length-1);
+
+        for (int i:nums){
+            System.out.println(i);
+        }
+    }
 }

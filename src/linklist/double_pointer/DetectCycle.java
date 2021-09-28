@@ -43,30 +43,31 @@ public class DetectCycle {
     }
 
     /**
-     * 不使用额外的空间，但是需要修改链表
+     * 双指针
      * @param head
      * @return
      */
-    public ListNode detectCycle2(ListNode head){
+    public ListNode detectCycle2(ListNode head) {
         if (head == null) {
             return null;
         }
-        int max = Integer.MAX_VALUE;
-        ListNode p = head;
-        ListNode q = head;
-        int n = 0;
-        while (p.next != null && p.val != max) {
-            p.val = max;
-            p = p.next;
-            n++;
+        ListNode slow = head, fast = head;
+        while (fast != null) {
+            slow = slow.next;
+            if (fast.next != null) {
+                fast = fast.next.next;
+            } else {
+                return null;
+            }
+            if (fast == slow) {
+                ListNode ptr = head;
+                while (ptr != slow) {
+                    ptr = ptr.next;
+                    slow = slow.next;
+                }
+                return ptr;
+            }
         }
-        if (p.next == null) {
-            return null;
-        }
-        while (n > 0) {
-            q = q.next;
-            n--;
-        }
-        return q;
+        return null;
     }
 }
