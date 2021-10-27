@@ -1,26 +1,32 @@
 package linklist;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class RemoveZeroSumSublists {
     public ListNode removeZeroSumSublists(ListNode head) {
-        // 记录链表长度，和每一个节点的值
-        int n = 0;
-        int[] hash = new int[1000];
 
-        ListNode cur = head;
-        while (cur != null){
-            hash[n++] = cur.val;
-            cur = cur.next;
+        // 设置假头节点
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+
+        Map<Integer, ListNode> map = new HashMap<>();
+
+        // 首次遍历建立 节点处链表和<->节点 哈希表
+        // 若同一和出现多次会覆盖，即记录该sum出现的最后一次节点
+        int sum = 0;
+        for (ListNode d = dummy; d != null; d = d.next) {
+            sum += d.val;
+            map.put(sum, d);
         }
 
-        // dp[i][j] 表示：链表i到j的和
-        int[][] dp = new int[n][n];
-        for (int i = 0; i < n; i++){
-            dp[i][i] = hash[i];
+        // 第二遍遍历 若当前节点处sum在下一处出现了则表明两结点之间所有节点和为0，直接删除区间所有节点
+        sum = 0;
+        for (ListNode d = dummy; d != null; d = d.next) {
+            sum += d.val;
+            d.next = map.get(sum).next;
         }
-        for (int i = 1; i < n; i++){
-            for (int j = 1; j < n; j++){
-                dp[i][j] = dp[i][j-1] + hash[j];
-            }
-        }
+
+        return dummy.next;
     }
 }
