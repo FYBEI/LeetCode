@@ -39,9 +39,9 @@ public class CanPartition {
         dp[0][nums[0]] = true;
 
         // 状态转移
-        // 当j >= nums[i]，说明可以选取nums[i]，那么dp[i][j] 的结果有两种，即选择了nums[i]和未选择nums[i]
-        // 选择nums[i] 则结果为 dp[i-1][j - nums[i]]；未选择nums[i]，则结果为num[i-1][j]
-        // 当j < nums[i]，说明无法选取nums[i]，则结果为 dp[i-1][j]
+        // 当j >= count[i]，说明可以选取nums[i]，那么dp[i][j] 的结果有两种，即选择了nums[i]和未选择nums[i]
+        // 选择nums[i] 则结果为 dp[i-1][j - count[i]]；未选择nums[i]，则结果为num[i-1][j]
+        // 当j < count[i]，说明无法选取nums[i]，则结果为 dp[i-1][j]
         for (int i = 1; i < n; i++){
             for (int j = 0; j < target+1; j++){
                 if (j >= nums[i]){

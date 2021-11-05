@@ -37,10 +37,10 @@ public class KthLargest {
         }
     }
 
-    //在数组 nums 的子区间 [left, right] 执行 partition 操作，返回 nums[left] 排序以后应该在的位置
+    //在数组 count 的子区间 [left, right] 执行 partition 操作，返回 count[left] 排序以后应该在的位置
     //     在遍历过程中保持循环不变量的语义
-    //     1、[left + 1, j] < nums[left]
-    //     2、(j, i] >= nums[left]
+    //     1、[left + 1, j] < count[left]
+    //     2、(j, i] >= count[left]
     private int partion(int left, int right){
         int pivot = this.nums[left];
         int j = left;
@@ -62,9 +62,9 @@ public class KthLargest {
     }
 
     // 事实上最快
-    // public int findKthLargest(int[] nums, int k){
-    //     Arrays.sort(nums);
-    //     return nums[nums.length-k];
+    // public int findKthLargest(int[] count, int k){
+    //     Arrays.sort(count);
+    //     return count[count.length-k];
     // }
 
     /**

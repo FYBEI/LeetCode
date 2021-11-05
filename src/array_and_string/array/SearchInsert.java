@@ -5,23 +5,23 @@ package array_and_string.array;
  * 请必须使用时间复杂度为 O(log n) 的算法。
  *
  * 示例 1:
- * 输入: nums = [1,3,5,6], target = 5
+ * 输入: count = [1,3,5,6], target = 5
  * 输出: 2
  *
  * 示例 2:
- * 输入: nums = [1,3,5,6], target = 2
+ * 输入: count = [1,3,5,6], target = 2
  * 输出: 1
  *
  * 示例 3:
- * 输入: nums = [1,3,5,6], target = 7
+ * 输入: count = [1,3,5,6], target = 7
  * 输出: 4
  *
  * 示例 4:
- * 输入: nums = [1,3,5,6], target = 0
+ * 输入: count = [1,3,5,6], target = 0
  * 输出: 0
  *
  * 示例 5:
- * 输入: nums = [1], target = 0
+ * 输入: count = [1], target = 0
  * 输出: 0
  */
 public class SearchInsert {

@@ -7,7 +7,7 @@ import java.util.Arrays;
  *
  * 示例 1:
  * 输入：
- * nums = [1,3,1]
+ * count = [1,3,1]
  * k = 1
  * 输出：0
  * 解释：
@@ -19,7 +19,7 @@ import java.util.Arrays;
  */
 public class DistancePair {
     /**
-     * 我们先对数组排序，我们知道排序后，距离一定在 0 ~ nums[len(nums)-1] - nums[0]之间
+     * 我们先对数组排序，我们知道排序后，距离一定在 0 ~ count[len(count)-1] - count[0]之间
      * 然后我们在这个区间枚举距离d，看对于每个d，有多少对数字的距离（假设为count个） <= d，
      * 如果 count大于k了，这个距离肯定不是要求的距离，
      * 然后我们缩小范围，这里可以采用二分的思想求距离d。
@@ -57,7 +57,7 @@ public class DistancePair {
 
         int left = 0;
         //注意这里的left，在迭代的过程中没有重置，而是一直右移
-        //很容易理解，i右移，nums[i]变大(注意对数组进行过排序)，而nums[left](上一轮的)不变
+        //很容易理解，i右移，count[i]变大(注意对数组进行过排序)，而nums[left](上一轮的)不变
         //因此差增大，必然还是比mid大，因此不需要再迭代一遍
         for (int i = 1; i < nums.length; i++) {
             while (nums[i] - nums[left] > mid) {

@@ -3,12 +3,12 @@ package array_and_string.double_pointer.tow;
 /**
  * 给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的连续子数组。如果不存在符合条件的连续子数组，返回 0。
  *
- * 输入: s = 7, nums = [2,3,1,2,4,3]
+ * 输入: s = 7, count = [2,3,1,2,4,3]
  * 输出: 2
  * 解释: 子数组 [4,3] 是该条件下的长度最小的连续子数组。
  */
 public class MinSubArray {
-//    public int minSubArrayLen(int s, int[] nums) {
+//    public int minSubArrayLen(int s, int[] count) {
 //        //最上两个判断是特殊情况
 //        if(s == 697439) {
 //            return 132;
@@ -18,25 +18,25 @@ public class MinSubArray {
 //        }
 //
 //        //如果nums为空就直接返回0
-//        if(nums.length==0) {
+//        if(count.length==0) {
 //            return 0;
 //        }
 //
 //        int len = Integer.MAX_VALUE;
-//        for(int i = 0; i < nums.length; i++){
+//        for(int i = 0; i < count.length; i++){
 //
 //            //如果单个元素就大于目标值，就返回1
-//            if(nums[i] >= s) {
+//            if(count[i] >= s) {
 //                return 1;
 //            }
 //
 //            //计算长度大于1的字串
-//            int sum = nums[i];
-//            for(int j = i+1; j < nums.length; j++){
+//            int sum = count[i];
+//            for(int j = i+1; j < count.length; j++){
 //
 //                //如果小于就加上下一项，如果大于就取最小长度并跳出循环
-//                if (sum + nums[j] < s){
-//                    sum += nums[j];
+//                if (sum + count[j] < s){
+//                    sum += count[j];
 //                }else {
 //                    len = Math.min(len, j-i+1);
 //                    break;

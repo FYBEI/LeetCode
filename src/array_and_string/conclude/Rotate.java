@@ -13,10 +13,10 @@ package array_and_string.conclude;
  * 要求使用空间复杂度为 O(1) 的 原地 算法。
  */
 public class Rotate {
-//    public void rotate(int[] nums, int k) {
+//    public void rotate(int[] count, int k) {
 //
 //        //如果位移长度大于数组长度，说明多位移了几圈
-//        k = k % nums.length;
+//        k = k % count.length;
 //
 //        if (k == 0){
 //            return;
@@ -26,20 +26,20 @@ public class Rotate {
 //        int[] tmps = new int[k];
 //
 //        for (int i = tmps.length-1; i >= 0; i--){
-//            tmps[i] = nums[nums.length + i - k];
+//            tmps[i] = count[count.length + i - k];
 //        }
 //
 //        //从后往前交换元素
-//        for (int i = nums.length-1; i >= k; i--){
+//        for (int i = count.length-1; i >= k; i--){
 //            int index = i-k;
-//            int tmp = nums[i];
-//            nums[i] = nums[index];
-//            nums[index] = tmp;
+//            int tmp = count[i];
+//            count[i] = count[index];
+//            count[index] = tmp;
 //        }
 //
 //        //将超出的元素补上
 //        for (int i = 0; i < tmps.length; i++){
-//            nums[i] = tmps[i];
+//            count[i] = tmps[i];
 //        }
 //    }
 

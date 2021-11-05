@@ -3,13 +3,13 @@ package Summary_of_Interview_Problem.sort_search;
 import java.util.*;
 
 /**
- * 给定一个整数数组 nums，按要求返回一个新数组 counts。数组 counts 有该性质： counts[i] 的值是  nums[i] 右侧小于 nums[i] 的元素的数量。
+ * 给定一个整数数组 count，按要求返回一个新数组 counts。数组 counts 有该性质： counts[i] 的值是  count[i] 右侧小于 count[i] 的元素的数量。
  *
  *  
  *
  * 示例：
  *
- * 输入：nums = [5,2,6,1]
+ * 输入：count = [5,2,6,1]
  * 输出：[2,1,1,0]
  * 解释：
  * 5 的右侧有 2 个更小的元素 (2 和 1)
@@ -61,7 +61,7 @@ public class CountSmaller {
     }
 
     /**
-     * 更新当前桶所代表的数字出现的次数，pos = nums[i]， c[pos]为nums[i]出现的次数
+     * 更新当前桶所代表的数字出现的次数，pos = count[i]， c[pos]为nums[i]出现的次数
      */
     private void update(int pos) {
         while (pos < c.length) {
@@ -72,7 +72,7 @@ public class CountSmaller {
     }
 
     /**
-     * 获取标号为pos的桶之前所有桶内数量的总和，即pos = nums[i]， 比nums[i]小的数在此之前出现过几次
+     * 获取标号为pos的桶之前所有桶内数量的总和，即pos = count[i]， 比nums[i]小的数在此之前出现过几次
      */
     private int query(int pos) {
         int ret = 0;
