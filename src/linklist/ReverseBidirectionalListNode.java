@@ -43,6 +43,13 @@ public class ReverseBidirectionalListNode {
         }
         System.out.println();
 
+        node = node4;
+        while (node != null){
+            System.out.print(node.val + " ");
+            node = node.pre;
+        }
+        System.out.println();
+
         node = rbln.reverse(node1);
         while (node != null){
             System.out.print(node.val + " ");
