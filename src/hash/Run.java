@@ -125,7 +125,7 @@ public class Run {
         int[] nums = {1,1,1,2,2,3};
         int k = 2;
 
-        List<Integer> list = topK.topKFrequent(nums, k);
+        int[] list = topK.topKFrequent(nums, k);
 
         for (Integer num : list){
             System.out.println(num);
