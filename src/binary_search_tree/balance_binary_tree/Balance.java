@@ -29,40 +29,32 @@ import binary_search_tree.TreeNode;
  */
 public class Balance {
     public boolean isBalanced(TreeNode root) {
-
-        if (root == null) {
+        if (getHeigh(root) == -1){
             return false;
         }
 
-        int index = gethigh(root);
-        return (index != -1);
+        return true;
     }
 
-    private int gethigh(TreeNode root){
-
-        if (root == null)
-        {
+    // 返回树的高度，-1代表树是不平衡的
+    private int getHeigh(TreeNode root){
+        if (root == null){
             return 0;
         }
 
-        int left = 0, right = 0;
-        if (root.left != null)
-        {
-            left = gethigh(root.left);
-        }
-        if (left != -1  && root.right != null)
-        {
-            right = gethigh(root.right);
-        }
-        if (left != -1 && right != -1)
-        {
-            int diff = Math.abs(left - right);
-            if (diff <= 1)
-            {
-                return ((left > right) ? left : right) + 1;
-            }
-        }
-        return -1;
+        int left = getHeigh(root.left);
+        int right = getHeigh(root.right);
 
+        // 左右子树有一个不是平衡的，则这棵树是不平衡的
+        if (left == -1 || right == -1){
+            return -1;
+        }
+
+        // 左右子树高度差距大于1，则不平衡；否则返回该树的高度
+        if (Math.abs(left - right) > 1){
+            return -1;
+        }else {
+            return Math.max(left, right) + 1;
+        }
     }
 }

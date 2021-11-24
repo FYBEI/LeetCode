@@ -1,4 +1,4 @@
-package array_and_string.array;
+package backtrack;
 
 import java.util.*;
 
