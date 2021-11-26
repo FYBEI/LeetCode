@@ -1,4 +1,4 @@
-package array_and_string;
+package greedy;
 
 public class ReMatch {
 
