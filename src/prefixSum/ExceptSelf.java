@@ -1,4 +1,4 @@
-package Tencent.array_string;
+package prefixSum;
 
 /**
  * 给定长度为 n 的整数数组 count，其中 n > 1，返回输出数组 output ，其中 output[i] 等于 count 中除 count[i] 之外其余各元素的乘积。
