@@ -1,4 +1,4 @@
-package Summary_of_Interview_Problem.queue_stack;
+package slidewindow;
 
 import java.util.Deque;
 import java.util.LinkedList;
