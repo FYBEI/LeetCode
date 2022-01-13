@@ -11,19 +11,20 @@ package array_and_string.double_pointer.tow;
 public class RemoveElement {
     public int removeElement(int[] nums, int val) {
 
-        int k = nums.length - 1;
+        int n = nums.length;
+        int slow = 0, fast = 0;
 
-        //从末尾往前走，遇到目标元素就是将其和指针元素交换位置
-        for (int i = nums.length-1; i >= 0; i--){
-            if (nums[i] == val){
-                int tmp = nums[k];
-                nums[k] = nums[i];
-                nums[i] = tmp;
-
-                k--;
+        for (; fast < n; fast++){
+            while(fast < n && nums[fast] == val){
+                fast++;
             }
+            if (fast >= n){
+                break;
+            }
+
+            nums[slow++] = nums[fast];
         }
 
-        return k+1;
+        return slow;
     }
 }
