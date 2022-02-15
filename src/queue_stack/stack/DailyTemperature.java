@@ -1,6 +1,7 @@
 package queue_stack.stack;
 
-import java.util.Stack;
+import java.util.Deque;
+import java.util.LinkedList;
 
 /**
  * 根据每日 气温 列表，请重新生成一个列表，对应位置的输入是你需要再等待多久温度才会升高超过该日的天数。如果之后都不会升高，请在该位置用 0 来代替。
@@ -84,27 +85,22 @@ public class DailyTemperature {
      * @return
      */
     public int[] dailyTemperatures3(int[] T) {
-        int[] res = new int[T.length];
+        int length = T.length;
+        int[] res = new int[length];
+        if (length == 1){
+            return res;
+        }
 
         //res[T.length-1] = 0；
         //单调栈,存储T的小标
-        Stack<Integer> s = new Stack<>();
-
-        for(int i = 0; i < T.length; i++){
-
-            //如果是空的，存入当前的下标
-            if(s.isEmpty()){
-                s.push(i);
-            }else{
-
-                //当栈不为空，且当前T>栈顶的T时，跟新结果集，并且出栈
-                while(!s.isEmpty() && T[i] > T[s.peek()]){
-                    res[s.peek()] = i- s.pop();
-                }
-
-                //存入当前下标
-                s.push(i);
+        Deque<Integer> stack = new LinkedList<Integer>();
+        for (int i = 0; i < length; i++) {
+            int temperature = T[i];
+            while (!stack.isEmpty() && temperature > T[stack.peek()]) {
+                int prevIndex = stack.pop();
+                res[prevIndex] = i - prevIndex;
             }
+            stack.push(i);
         }
         return res;
 
