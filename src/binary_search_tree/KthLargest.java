@@ -1,5 +1,7 @@
 package binary_search_tree;
 
+import java.util.*;
+
 public class KthLargest {
     public int kthLargest(TreeNode root, int k) {
 
@@ -20,5 +22,20 @@ public class KthLargest {
         }
 
         return 1 + search(root.left) + search(root.right);
+    }
+
+    private List<Integer> inorder(TreeNode root, List<Integer> order, int k) {
+        if (root == null){
+            return order;
+        }
+
+        inorder(root.right, order, k);
+        if (order.size() == k){
+            return order;
+        }
+        order.add(root.val);
+
+        inorder(root.left, order, k);
+        return order;
     }
 }
