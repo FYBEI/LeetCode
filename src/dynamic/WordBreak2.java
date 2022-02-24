@@ -1,4 +1,4 @@
-package Summary_of_Interview_Problem.string;
+package dynamic;
 
 import java.util.*;
 
