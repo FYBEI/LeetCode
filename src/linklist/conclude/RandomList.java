@@ -29,21 +29,21 @@ public class RandomList {
     public Node copyRandomList(Node head) {
         if (head == null) return null;
         Node node = head;
-        //复制next节点
+        //复制next节点，将每个新节点放置在node节点的next处，形成 node -> newNode -> next -> nextNewNode
         while (node != null) {
             Node next = node.next;
             Node temp = new Node(node.val, next, null);
             node.next = temp;
             node = next;
         }
-        //复制random节点
+        //复制random节点，每个新节点的random应该指向新的节点，node.random为原random节点，node.random.next为新节点
         node = head;
         while (node != null) {
             if(node.random != null) node.next.random = node.random.next;
             node = node.next.next;
         }
 
-        //删除原来的链表
+        //删除原来的链表，将原node节点next指向原next，新节点指向新的next，形成 node -> next，newNode -> nextNewNode
         node = head;
         Node newNode = head.next;
         while (node.next != null) {

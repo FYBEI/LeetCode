@@ -1,6 +1,4 @@
-package Summary_of_Interview_Problem.string;
-
-import javafx.util.Pair;
+package dynamic;
 
 import java.util.*;
 

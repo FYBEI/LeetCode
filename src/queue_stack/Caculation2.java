@@ -1,9 +1,9 @@
-package Summary_of_Interview_Problem.queue_stack;
+package queue_stack;
 
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class Caculation {
+public class Caculation2 {
 
     public int calculate(String s) {
 
@@ -51,10 +51,10 @@ public class Caculation {
     }
 
     public static void main(String[] args) {
-        Caculation caculation = new Caculation();
+        Caculation2 caculation2 = new Caculation2();
 
         String s = "1-1*12+1";
-        int result = caculation.calculate(s);
+        int result = caculation2.calculate(s);
         System.out.print(result);
     }
 }

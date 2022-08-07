@@ -17,42 +17,42 @@ import linklist.ListNode;
  * 链表的第一个节点视为奇数节点，第二个节点视为偶数节点，以此类推。
  */
 public class OddEvenList {
-    public ListNode oddEvenList(ListNode head) {
 
+    public ListNode oddEvenList(ListNode head) {
         if (head == null || head.next == null || head.next.next == null){
             return head;
         }
 
-        //标记cur所在位置
-        int index = 0;
+        // 奇偶头节点
+        ListNode oddHead = new ListNode();
+        ListNode evenHead = new ListNode();
 
+        ListNode oddCur = oddHead;
+        ListNode evenCur = evenHead;
         ListNode cur = head;
-        ListNode next = head.next;
 
-        //链表第二个点，即第一个奇数点
-        ListNode second = head.next;
+        // 标记奇偶位，true为奇数位，false为偶数位
+        boolean flag = true;
 
-        //每个点的next连到后两个点
-        //如果next到达末尾，判断这是cur为在奇数点还是偶数点，如果在偶数点，cur的next为second；如果在奇数点，即next在偶数点，next的next为second
-        while (next != null){
-            cur.next = next.next;
-
-            if (next.next != null){
-                cur = next;
-                next = next.next;
-                index++;
+        while(cur != null){
+            if (flag){
+                oddCur.next = cur;
+                oddCur = oddCur.next;
+                flag = false;
             }else {
-                if (index % 2 == 0){
-                    cur.next = second;
-                }else {
-                    next.next = second;
-                }
-                break;
+                evenCur.next = cur;
+                evenCur = evenCur.next;
+                flag = true;
             }
 
+            cur = cur.next;
         }
+        // 末尾连接null，避免循环链表
+        oddCur.next = null;
+        evenCur.next = null;
 
-        return head;
-
+        // 奇数链表末尾连接偶数链表头
+        oddCur.next = evenHead.next;
+        return oddHead.next;
     }
 }
